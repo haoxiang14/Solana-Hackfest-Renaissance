@@ -13,13 +13,9 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Progress } from "@/components/ui/progress"
 import {
   AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import {
@@ -41,7 +37,7 @@ import {
 } from "@/components/ui/select"
 
 
-export default function Buy () {
+export default function Buy() {
   return (
     <div>
       <Navbar />
@@ -77,7 +73,7 @@ export default function Buy () {
             </TableCell>
             <TableCell> 7:10:59 </TableCell>
             <TableCell className="text-right">
-            <AlertDialog>
+              <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button> Join </Button>
                 </AlertDialogTrigger>
@@ -90,28 +86,28 @@ export default function Buy () {
                           <CardDescription>Deploy your new project in one-click.</CardDescription>
                         </CardHeader>
                         <CardContent>
-            <form>
-              <div className="grid w-full items-center gap-4">
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" placeholder="Name of your project" />
-                </div>
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="framework">Framework</Label>
-                  <Select>
-                    <SelectTrigger id="framework">
-                      <SelectValue placeholder="Select" />
-                    </SelectTrigger>
-                    <SelectContent position="popper">
-                      <SelectItem value="next">Next.js</SelectItem>
-                      <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                      <SelectItem value="astro">Astro</SelectItem>
-                      <SelectItem value="nuxt">Nuxt.js</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            </form>
+                          <form>
+                            <div className="grid w-full items-center gap-4">
+                              <div className="flex flex-col space-y-1.5">
+                                <Label htmlFor="name">Name</Label>
+                                <Input id="name" placeholder="Name of your project" />
+                              </div>
+                              <div className="flex flex-col space-y-1.5">
+                                <Label htmlFor="framework">Framework</Label>
+                                <Select>
+                                  <SelectTrigger id="framework">
+                                    <SelectValue placeholder="Select" />
+                                  </SelectTrigger>
+                                  <SelectContent position="popper">
+                                    <SelectItem value="next">Next.js</SelectItem>
+                                    <SelectItem value="sveltekit">SvelteKit</SelectItem>
+                                    <SelectItem value="astro">Astro</SelectItem>
+                                    <SelectItem value="nuxt">Nuxt.js</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                            </div>
+                          </form>
                         </CardContent>
                         <CardFooter className="flex justify-between">
                           <Button variant="outline">Cancel</Button>
@@ -120,8 +116,8 @@ export default function Buy () {
                       </Card>
                     </AlertDialogDescription>
                   </AlertDialogHeader>
-              </AlertDialogContent>
-            </AlertDialog>
+                </AlertDialogContent>
+              </AlertDialog>
             </TableCell>
           </TableRow>
         </TableBody>
