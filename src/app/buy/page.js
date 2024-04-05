@@ -1,4 +1,3 @@
-import Navbar from "@/components/navbar";
 import {
   Table,
   TableBody,
@@ -36,11 +35,9 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-
 export default function Buy() {
   return (
     <div>
-      <Navbar />
       <h1 className="text-3xl font-bold mt-8"> 🚀 Presale List </h1>
       <Table className="mt-4">
         <TableCaption> Presale List </TableCaption>
