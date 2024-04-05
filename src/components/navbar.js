@@ -36,11 +36,11 @@ export default function Navbar() {
             <h1 className="text-3xl font-semibold">🐸 Meme.rush 🐶 </h1>
             <div className='flex items-center'>
                 {connected? (
-                    <Button className="px-4 py-6 font-bold bg-blue-800 hover:bg-black mr-2"> 
+                    <Button className="px-4 py-6 text-base font-bold bg-blue-800 hover:bg-black mr-2"> 
                         {balance} SOL 
                     </Button>
                 ) : (
-                    <Button className="px-4 py-6 font-bold bg-blue-800 hover:bg-black mr-2"> 
+                    <Button className="px-4 py-6 text-base font-bold bg-blue-800 hover:bg-black mr-2"> 
                         Balance
                     </Button>
                 )}
