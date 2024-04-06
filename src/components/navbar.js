@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import WalletMultiButton from '@/components/wallet-button'
 
 
-export default function Navbar() {
+export function Navbar() {
   const wallet = useWallet();
   const [balance, setBalance] = useState(null);
   const { connected, publicKey } = useWallet();

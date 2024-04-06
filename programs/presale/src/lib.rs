@@ -6,7 +6,8 @@ pub mod state;
 
 use instructions::*;
 
-declare_id!("7wdX7ExMUqLZS2DiUFY6rbXAzRdyA7uK6yG5e4veFuyX");
+// declare_id!("7wdX7ExMUqLZS2DiUFY6rbXAzRdyA7uK6yG5e4veFuyX");
+declare_id!("GmCJDa4X3f8PsxAi7YKEEHfRgZrBzqPTeQFaAD7ebFgJ");
 
 #[program]
 pub mod presale {
@@ -23,5 +24,9 @@ pub mod presale {
 
     pub fn start_presale(ctx: Context<StartPresale>, qty: u64) -> Result<()> {
         start_presale::start_presale(ctx, qty)
+    }
+
+    pub fn buy_presale(ctx: Context<BuyPresale>, ant: u64) -> Result<()> {
+        buy_presale::buy_presale(ctx, ant)
     }
 }
