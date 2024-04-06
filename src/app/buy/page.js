@@ -22,9 +22,16 @@ import {
 } from "@/components/ui/alert-dialog"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Input } from "@/components/ui/input";
+import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers"
 
-export default function Buy() {
+export default async function Buy() {
   const prices = ["0.1", "0.2", "0.5", "1"]
+  const cookieStore = cookies()
+  const supabase = createServerSupabaseClient({ cookies: () => cookieStore })
+  const { data } = await supabase.from("presales").select()
+  console.log(data)
+
   return (
     <div>
       <h1 className="text-3xl font-bold mt-8"> 🚀 Presale List </h1>
@@ -42,51 +49,53 @@ export default function Buy() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell className="font-medium flex items-center">
-              <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-              <span className="ml-2"> Pepe Token </span>
-            </TableCell>
-            <TableCell> 1 SOL = 100000 Pepe </TableCell>
-            <TableCell> 5 SOL </TableCell>
-            <TableCell> 10 SOL </TableCell>
-            <TableCell>
-              <p className="pb-4"> Progress = 10% </p>
-              <Progress value={10} />
-            </TableCell>
-            <TableCell> 7:10:59 </TableCell>
-            <TableCell className="text-right">
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button> Join </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Buy Coin</AlertDialogTitle>
-                  </AlertDialogHeader>
-                  <div className="space-y-2">
-                    <p>solsheet coin</p>
-                    <ToggleGroup type="single" className="flex gap-4">
-                      {prices.map((p) => (
-                        <ToggleGroupItem value={p} className="w-full h-24 bg-neutral-200 data-[state=on]:bg-neutral-800 data-[state=on]:text-white text-numeric text-2xl font-bold">{p}</ToggleGroupItem>
-                      ))}
-                    </ToggleGroup>
-                    <div>
-                      <label htmlFor="custom">Enter custom amount</label>
-                      <Input id="custom" />
+          {data.map((presale) => (
+            <TableRow key={presale.id}>
+              <TableCell className="font-medium flex items-center">
+                <Avatar>
+                  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+                <span className="ml-2">{presale.token_address}</span>
+              </TableCell>
+              <TableCell> 1 SOL = {presale.price} tokens</TableCell>
+              <TableCell> {presale.soft_cap} SOL </TableCell>
+              <TableCell> {presale.hard_cap} SOL </TableCell>
+              <TableCell>
+                <p className="pb-4"> Progress = 10% </p>
+                <Progress value={10} />
+              </TableCell>
+              <TableCell> {(new Date(presale.end_date)).toLocaleString()}</TableCell>
+              <TableCell className="text-right">
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button> Join </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Buy Coin</AlertDialogTitle>
+                    </AlertDialogHeader>
+                    <div className="space-y-2">
+                      <p>solsheet coin</p>
+                      <ToggleGroup type="single" className="flex gap-4">
+                        {prices.map((p) => (
+                          <ToggleGroupItem value={p} className="w-full h-24 bg-neutral-200 data-[state=on]:bg-neutral-800 data-[state=on]:text-white text-numeric text-2xl font-bold">{p}</ToggleGroupItem>
+                        ))}
+                      </ToggleGroup>
+                      <div>
+                        <label htmlFor="custom">Enter custom amount</label>
+                        <Input id="custom" />
+                      </div>
                     </div>
-                  </div>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction>Ape</AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            </TableCell>
-          </TableRow>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction>Ape</AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </div>
