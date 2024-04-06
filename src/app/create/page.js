@@ -16,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { DatePickerDemo } from "@/components/dateRangePicker"
 
 
 export default function Create() {
@@ -36,18 +37,28 @@ export default function Create() {
                     <Input id="name" placeholder="Token Address" />
                   </div>
                   <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="framework">Framework</Label>
-                    <Select>
-                      <SelectTrigger id="framework">
-                        <SelectValue placeholder="Select" />
-                      </SelectTrigger>
-                      <SelectContent position="popper">
-                        <SelectItem value="next">Next.js</SelectItem>
-                        <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                        <SelectItem value="astro">Astro</SelectItem>
-                        <SelectItem value="nuxt">Nuxt.js</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <Label htmlFor="name"> Set Presale Price </Label>
+                    <Input id="name" placeholder="SOL" />
+                  </div>
+                  <div className="flex justify-between gap-8">
+                    <div className="flex flex-col space-y-1.5 w-full">
+                      <Label htmlFor="name"> Soft Cap </Label>
+                      <Input id="name" placeholder="SOL" />
+                    </div>
+                    <div className="flex flex-col space-y-1.5 w-full">
+                      <Label htmlFor="name"> Hard Cap </Label>
+                      <Input id="name" placeholder="SOL" />
+                    </div>
+                  </div>
+                  <div className="flex justify-between gap-8">
+                    <div className="flex flex-col space-y-1.5">
+                      <Label htmlFor="name"> Presale Start Date </Label>
+                      <DatePickerDemo />
+                    </div>
+                    <div className="flex flex-col space-y-1.5">
+                      <Label htmlFor="name"> Presale End Date </Label>
+                      <DatePickerDemo />
+                    </div>
                   </div>
                 </div>
               </form>
