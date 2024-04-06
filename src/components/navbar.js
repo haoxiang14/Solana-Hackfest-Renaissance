@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 
 import { Button } from '@/components/ui/button'
 import WalletMultiButton from '@/components/wallet-button'
-
+import Link from 'next/link'
 
 export function Navbar() {
   const wallet = useWallet();
@@ -34,7 +34,9 @@ export function Navbar() {
 
   return (
     <div className="flex justify-between py-4 px-4 bg-blue-200 items-center rounded-xl">
-      <h1 className="text-3xl font-semibold">🐸 Meme.rush 🐶 </h1>
+      <Link href="/">
+        <h1 className="text-3xl font-semibold">🐸 Meme.rush 🐶 </h1>
+      </Link>
       <div className='flex items-center'>
         {connected ? (
           <Button className="px-4 py-6 text-base font-bold bg-blue-800 hover:bg-black mr-2">
