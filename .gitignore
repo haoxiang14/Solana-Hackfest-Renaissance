@@ -40,3 +40,5 @@ target
 .yarn
 test-ledger
 **/*.rs.bk
+
+.env
